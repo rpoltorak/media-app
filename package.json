@@ -4,8 +4,10 @@
   "description": "Media app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf build",
+    "copy": "cp -r src/views/ build/views/",
+    "build": "npm run clean && babel src -d build && npm run copy",
+    "start": "nodemon --watch src/  --exec 'npm run build && node build/index.js'"
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,33 @@
   },
   "homepage": "https://github.com/rpoltorak/media-app#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1",
     "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "objection": "^0.9.4",
+    "pg": "^7.4.1",
     "pug": "^2.0.0-rc.4"
   },
   "engines": {
     "node": "9.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.14.10"
+    "nodemon": "^1.14.10",
+    "rimraf": "^2.6.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-1"
+    ]
   }
 }
