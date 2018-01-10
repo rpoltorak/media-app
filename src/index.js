@@ -1,17 +1,23 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
 
-const userController = require('./controllers/user');
+import userController from './controllers/user';
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'pug');
+app.set('views', __dirname + '/views');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(error, req, res, next) {
+  console.error(error.stack);
+  res.sendStatus(error.statusCode || error.status || 500);
+});
+
 app.get('/', function (req, res) {
-  res.render('index', { title: 'App' });
+  res.render('./index', { title: 'App' });
 });
 
 app.get('/profile', userController.getProfile);
