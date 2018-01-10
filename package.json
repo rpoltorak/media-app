@@ -7,9 +7,8 @@
     "clean": "rimraf build",
     "copy": "cp -r src/views/ build/views/",
     "build": "npm run clean && babel src -d build && npm run copy",
-    "start:dev": "nodemon --watch src/  --exec 'npm run build && node build/index.js'",
-    "postinstall": "npm run build",
-    "start": "node build/index.js"
+    "start": "nodemon --watch src/  --exec 'npm run build && node build/index.js'",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
