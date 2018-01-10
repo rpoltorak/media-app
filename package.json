@@ -8,7 +8,8 @@
     "copy": "cp -r src/views/ build/views/",
     "build": "npm run clean && babel src -d build && npm run copy",
     "start:dev": "nodemon --watch src/  --exec 'npm run build && node build/index.js'",
-    "start": "npm run build && node build/index.js"
+    "postinstall": "npm run build",
+    "start": "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -36,18 +37,5 @@
   "devDependencies": {
     "nodemon": "^1.14.10",
     "rimraf": "^2.6.2"
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      "stage-1"
-    ]
   }
 }
