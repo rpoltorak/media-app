@@ -7,8 +7,8 @@
     "clean": "rimraf build",
     "copy": "cp -r src/views/ build/views/",
     "build": "npm run clean && babel src -d build && npm run copy",
-    "start:dev": "nodemon --watch src/  --exec 'npm run build && node build/index.js'",
-    "start": "npm run build && node build/index.js"
+    "start": "nodemon --watch src/  --exec 'npm run build && node build/index.js'",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,26 +28,13 @@
     "knex": "^0.14.2",
     "objection": "^0.9.4",
     "pg": "^7.4.1",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.0-rc.4",
+    "rimraf": "^2.6.2"
   },
   "engines": {
     "node": "9.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.14.10",
-    "rimraf": "^2.6.2"
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      "stage-1"
-    ]
+    "nodemon": "^1.14.10"
   }
 }
