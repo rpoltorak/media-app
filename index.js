@@ -1,7 +1,7 @@
-import express from 'express';
-import path from 'path';
+const express = require('express');
+const path = require('path');
 
-import userController from './controllers/user';
+const userController = require('./controllers/user');
 
 const app = express();
 

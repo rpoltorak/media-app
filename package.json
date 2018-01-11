@@ -4,11 +4,9 @@
   "description": "Media app",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf build",
-    "copy": "cp -r src/views/ build/views/",
-    "build": "npm run clean && babel src -d build && npm run copy",
-    "start": "nodemon --watch src/  --exec 'npm run build && node build/index.js'",
-    "postinstall": "npm run build"
+    "start": "nodemon index.js",
+    "migration:push": "knex migrate:latest",
+    "migration:make": "knex migrate:make"
   },
   "repository": {
     "type": "git",
@@ -21,15 +19,15 @@
   },
   "homepage": "https://github.com/rpoltorak/media-app#readme",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-1": "^6.24.1",
+    "bcrypt-nodejs": "0.0.3",
+    "bookshelf": "^0.12.1",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "knex": "^0.14.2",
-    "objection": "^0.9.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.4.1",
-    "pug": "^2.0.0-rc.4",
-    "rimraf": "^2.6.2"
+    "pug": "^2.0.0-rc.4"
   },
   "engines": {
     "node": "9.3.0"
