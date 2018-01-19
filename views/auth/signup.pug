@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  if messages.success
+    div.is-success
+      for success in messages.success
+        div= success.msg
+  if messages.error
+    div.is-danger
+      for error in messages.error
+        div= error.msg
+
+  h4 Create an account
+
+  form(method='POST', action='/signup')
+    label(for='email') Email
+      input(type='text', name='email', id='email', placeholder='Email')
+    label(for='password') Password
+      input(type='password', name='password', id='password', placeholder='Password')
+    button(type='submit') Signup
+
+    hr
+
+
+  p Already have an account?
+    a(href='/login')
+      strong  Log in
